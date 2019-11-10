@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #f9fbfd;
+    color: #3b4954;
+}
+
+header {
+    text-align: center;
+    font-size: 60px;
+}
+/* container div */
+#genBox {
+    background-color: #ffff;
+    margin: 0 auto;
+    height: 40%;
+    width: 800px;
+    position: absolute;
+    margin-left: 380px;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 5px;
+
+}
+
+#textArea {
+    width: 790px;
+    height: 100px;
+    border-style: dashed;
+    border-color: gray;
+    border-width: 5px;
+
+}
+
+#button1 {
+    background-color: red;
+    color: white;
+}
+
