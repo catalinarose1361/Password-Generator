@@ -41,22 +41,25 @@ function userSpecifics () {
         
         specifiedCharacters.push(specialChar);
     }
+    console.log("passwordLength:", passwordLength)
+    console.log("specifiedCharacters:", specifiedCharacters)
   
     
-    function generate (passwordLength, specifiedCharacters) {
+    function generate () {
        var newPassword = []; {
 
             newPassword = specifiedCharacters[Math.floor(Math.random() * passwordLength)]
 
-
-
-           
+            
+            console.log("new password:", newPassword)
+            
             return newPassword.join('');
-       }
-       
-
+        }
+        
+        
     }
-    var finale = generate.newPassword;
+    var finale = generate();
+    console.log("finale:", finale)
     alert(finale);
     
     
@@ -64,7 +67,7 @@ function userSpecifics () {
     }
 
     button.addEventListener("click", userSpecifics) 
-        event.preventDefault();
+        // event.preventDefault();
     
  
     
