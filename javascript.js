@@ -16,28 +16,30 @@ function userSpecifics () {
     //     -special ch
     var specialCharOption = confirm("would you like to include special characters?");
     
-    if (passwordLength<=0) {
-        alert("you've input an incorrect value");
-    }
-    if (lowercaseOption) {
+    var specifiedCharacters = [];
+
+
+    // if (passwordLength<=0) {
+    //     alert("you've input an incorrect value");
+    // }
+    if (lowercaseOption === true) {
         
-        var specifiedCharacters = [];
         specifiedCharacters.push(lowerCase);
     }
     // If the above condition has not been satisfied run the following block of code.
-    else {
-        // Alert our message to the user.
-        var specifiedCharacters = [];
-    }
-    if (uppercaseOption) {
+    // else {
+    //     // Alert our message to the user.
+    //     var specifiedCharacters = [];
+    // }
+    if (uppercaseOption === true) {
         
         specifiedCharacters.push(upperCase);
     }
-    if (numbersOption) {
+    if (numbersOption === true) {
         
         specifiedCharacters.push(numbers);
     }
-    if (specialCharOption) {
+    if (specialCharOption === true) {
         
         specifiedCharacters.push(specialChar);
     }

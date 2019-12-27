@@ -1,55 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- bootstrap meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Stylesheets In order : reset code, bootstrap link, personal stylesheet -->
-    <link rel="stylesheet" type="text/css" href="assets/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Password Generator</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css" />
 
-    <title>Password Generator</title>
-  </head>
+    </head>
+    <body>
+        <div class="uk-background-cover uk-height-viewport" style="background-image: url(assets/lock-background.jpg);">
+        <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-position-center">
 
-  <body>
-    <header>Password Generator</header>
+        <h1 class="uk-heading-line uk-text-center"><span>Password Generator</span></h1>
 
-    <div class="container" id=genBox>
-        <!-- Generator Label -->
-        <div class="row">
-            <div class="colum">
-                <h1>Generate a Password</h1>
+        <form>
+            <div class="uk-margin">
+               
+            <input class="uk-input uk-form-large" type="text" placeholder="Your Awesome New Password">
+                   
             </div>
-        </div>
-        <!-- Generator Text Area -->
-        <div class="row">
-            <div class="colum">
-                <form id="textArea">
-                    <div class="form-group">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- Generator Buttons -->
-        <div class="row">
-                <div class="colum">
-                    <button type="button" class="btn btn-primary btn-lg" id="button1">Generate Password</button>
-                    <button type="button" class="btn btn-secondary btn-lg" id="button2">Copy to Clip Board</button>
-                </div>
-        </div>
-
+        </form>
+        <script src="javascript.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     </div>
-
-
-
-
-    <!-- Javascript Link -->
-    <script src="javascript.js"></script>
-    <!-- bootstrap pre-sets -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+    </div>
+    </body>
 </html>
+   
