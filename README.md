@@ -1,6 +1,6 @@
 # Password-Generator
 
-This application is a simple tool that can be used to generate a random password. The password generator takes in user specifics such as the length and what type of characters to include, and outputs a password that meets the users specifications. The password is NOT saved to a database, providing the user with a sense of security when utilising the application.
+This application is a simple tool that can be used to generate a random password. The password generator takes in user specifics such as the length and what type of characters to include, and outputs a password that meets the users specifications. The password is NOT saved to a database, providing the user with a sense of security when using the application.
 
 
 To use: 
