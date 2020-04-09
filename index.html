@@ -5,8 +5,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.min.css" />
-        <script src="js/uikit.min.js"></script>
-        <script src="js/uikit-icons.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css" />
 
     </head>
@@ -17,16 +15,29 @@
         <h1 class="uk-heading-line uk-text-center"><span>Password Generator</span></h1>
 
         <form>
-            <div class="uk-margin">
-               
-            <input class="uk-input uk-form-large" type="text" placeholder="Your Awesome New Password">
+            <div class="uk-margin uk-pagination uk-flex-center">
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <a class="uk-form-icon uk-form-icon-flip" value="Copy to Clipboard" id="copy" uk-icon="icon: pencil"></a>
+                        <textarea class="uk-form-blank" id="password" placeholder="Password" type="textarea"></textarea>
+                    </div>
+                </div>
+             
+            
+  
+            
                    
             </div>
+            <div class="col-md">
+                <input class="uk-button uk-button-secondary uk-width-1-1" type="button" value="Generate Password" id="generateButton" class="btn btn-info mb-4">
+            </div>
+            
         </form>
         <script src="javascript.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.0/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.0/dist/js/uikit-icons.min.js"></script>
     </body>
 </html>
    

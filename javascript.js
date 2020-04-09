@@ -1,75 +1,141 @@
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialChar = "~`!#$%^&*+=-[]\\';,/{}|\":<>?";
+var numbers = "0123456789";
 
-var lowerCase = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "a", "s", "d", "f", "g", "h", "j", "k", "l", "z", "x", "c", "v", "b", "n", "m"];
-var upperCase = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M"];
-var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var specialChar = ["!", "@", "#", "$", "%", "&"];
-var button = document.querySelector("#button1")
-function userSpecifics () {
-    //     -length
-    var passwordLength = prompt("How many characters should your password be?");
-    //     -lowerCase 
-    var lowercaseOption = confirm("would you like to include lowercase characters?");
-    //     -upperCase 
-    var uppercaseOption = confirm("Would you like to include uppercase characters?");
-    //     -numbers
-    var numbersOption = confirm("would you like to include numbers?");
-    //     -special ch
-    var specialCharOption = confirm("would you like to include special characters?");
+//Loads the page first so user can click on "Generate Password" button and then the prompt and confirm functions will run
+document.querySelector("#generateButton").addEventListener("click", function() {
     
-    var specifiedCharacters = [];
+    var options = getPasswordSpecs();
+   
+    var passwordArr = pushSpecifiedChoices(options);
+    
+    var password = generatePW(options.pwLength, passwordArr);
 
-
-    // if (passwordLength<=0) {
-    //     alert("you've input an incorrect value");
-    // }
-    if (lowercaseOption === true) {
-        
-        specifiedCharacters.push(lowerCase);
-    }
-    // If the above condition has not been satisfied run the following block of code.
-    // else {
-    //     // Alert our message to the user.
-    //     var specifiedCharacters = [];
-    // }
-    if (uppercaseOption === true) {
-        
-        specifiedCharacters.push(upperCase);
-    }
-    if (numbersOption === true) {
-        
-        specifiedCharacters.push(numbers);
-    }
-    if (specialCharOption === true) {
-        
-        specifiedCharacters.push(specialChar);
-    }
-    console.log("passwordLength:", passwordLength)
-    console.log("specifiedCharacters:", specifiedCharacters)
+    document.querySelector("#password").innerHTML = password;
+    
+    document.querySelector("#copy").addEventListener("click", copyToClipboard);
+  });
+  
+  //This function copies the generated password in the text area, to the user's clipboard
+  function copyToClipboard() {
+    var copyText = document.querySelector("#password");
+    //Only works with textarea or input text element
+    copyText.select();
+    document.execCommand("copy");
+    alert("YOUR NEW PASSWORD HAS BEEN COPIED TO YOUR CLIP-BOARD")
+  }
+  
+  //This function runs the user prompts
+  function getPasswordSpecs() {
+    
+    var pwLength = parseInt(
+      prompt("HOW LONG WOULD YOU LIKE YOUR PASSWORD TO BE? PLEASE ENTER A NUMBER BETWEEN 8 AND 128 ")
+    );
   
     
-    function generate () {
-       var newPassword = []; {
+    //This function ensures the user enters a number of the correct length
+    if (pwLength < 8 || pwLength > 128 || isNaN(pwLength)) {
+      
+      alert("OOPS, IT LOOKS LIKE YOU INPUT AN INCORRECT VALUE. WOULD YOU LIKE TO START OVER?");
 
-            newPassword = specifiedCharacters[Math.floor(Math.random() * passwordLength)]
-
-            
-            console.log("new password:", newPassword)
-            
-            return newPassword.join('');
-        }
-        
-        
+      return getPasswordSpecs();
     }
-    var finale = generate();
-    console.log("finale:", finale)
-    alert(finale);
+    //Boolean Prompt
+    var confirmSpecial = confirm("WOULD YOU LIKE YOUR PASSWORD TO INCLUDE SPECIAL CHARACTERS?");
     
+    //Boolean Prompt
+    var confirmNum = confirm("WOULD YOU LIKE YOUR PASSWORD TO INCLUDE NUMBERS?");
+   
+    //Boolean Prompt
+    var confirmLower = confirm("WOULD YOU LIKE YOUR PASSWORD TO INCLUDE LOWERCASE LETTERS?");
     
-        
+    //Boolean Prompt
+    var confirmUpper = confirm("WOULD YOU LIKE YOUR PASSWORD TO INCLUDE UPPERCASE LETTERS?");
+    
+    // Returns the user inout
+    return {
+      pwLength,
+      confirmNum,
+      confirmSpecial,
+      confirmLower,
+      confirmUpper
+    };
+  }
+  
+    //  This function takes the user input and creates a random password
+  function pushSpecifiedChoices(op) {
+    var { confirmNum, confirmSpecial, confirmLower, confirmUpper } = op;
+   
+    var specifiedCharacters = [];
+    
+    var finalpassword = [];
+  
+    // logic to determine what types of characters to push into the empty arrays
+    if (confirmSpecial) {
+      specifiedCharacters.push(specialChar);
+      var randomItem = getRandomItemInArr(specialChar);
+      finalpassword.push(randomItem);
     }
-
-    button.addEventListener("click", userSpecifics) 
-        // event.preventDefault();
+  
     
- 
+    if (confirmNum) {
+      specifiedCharacters.push(numbers);
+      var randomItem = getRandomItemInArr(numbers);
+      finalpassword.push(randomItem);
+    }
+  
+   
+    if (confirmLower) {
+      specifiedCharacters.push(lowerCase);
+      var randomItem = getRandomItemInArr(lowerCase);
+      finalpassword.push(randomItem);
+    }
+  
+   
+    if (confirmUpper) {
+      specifiedCharacters.push(upperCase);
+      var randomItem = getRandomItemInArr(upperCase);
+      finalpassword.push(randomItem);
+    }
+  
+  
+    return {
+      specifiedCharacters: specifiedCharacters.join(""),
+      finalpassword: finalpassword.join("")
+    };
+  }
+  
+  //This function takes in an array and returns a random character from that array 
+  function getRandomItemInArr(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+  
+  //This function takes in the user specified length and the array of chosen characters  
+  function generatePW(length, passwordArr) {
+   
+    let final = passwordArr.finalpassword.split("");
     
+    //pushes a random selection of characters from the specifiedCharacters variables until it reaches the user defined length
+    for (var i = passwordArr.finalpassword.length; i < length; i++) {
+      var randChar = getRandomItemInArr(passwordArr.specifiedCharacters);
+      final.push(randChar);
+    }
+    
+    // shuffle the array
+    return ShuffleArr(final).join("");
+  }
+  
+    //   This function shuffles all the characters in an array 
+  function ShuffleArr(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      var randIndex = Math.floor(Math.random() * arr.length);
+  
+      var temp1 = arr[i];
+      var temp2 = arr[randIndex];
+  
+      arr[i] = temp2;
+      arr[randIndex] = temp1;
+    }
+    return arr;
+  }
